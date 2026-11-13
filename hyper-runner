@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyper Runner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-wrapper">
+    <div class="hud">
+      <div>SCORE: <span id="score">0</span></div>
+      <div>HIGH SCORE: <span id="high-score">0</span></div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="800" height="350"></canvas>
+
+      <!-- Start Screen Overlay -->
+      <div id="startScreen" class="overlay">
+        <h1>HYPER RUNNER</h1>
+        <p>Jump: <strong>Space / W / Up</strong> &nbsp;|&nbsp; Slide: <strong>S / Down</strong></p>
+        <button id="startBtn">START RUN</button>
+      </div>
+
+      <!-- Game Over Screen Overlay -->
+      <div id="gameOverScreen" class="overlay hidden">
+        <h1>SYSTEM CRASHED</h1>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <button id="restartBtn">PLAY AGAIN</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: #090a0f;
+  color: #00f3ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-wrapper {
+  width: 800px;
+  max-width: 95vw;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #00f3ff;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  border: 2px solid #00f3ff;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 10, 15, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h1 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  color: #ff007f;
+  text-shadow: 0 0 12px #ff007f;
+}
+
+.overlay p {
+  color: #e6edf3;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #090a0f;
+  background-color: #00f3ff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 12px #00f3ff;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #66f8ff;
+  transform: scale(1.05);
+}
